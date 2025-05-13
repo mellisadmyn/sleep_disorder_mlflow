@@ -1,0 +1,15 @@
+artifact_uri: file:C:/Users/melli/Dropbox/Dicoding/SMSML_Mellisa/Membangun_model/mlruns/892575355303627548/96861db7b9354c87933fbafda1910e65/artifacts
+end_time: 1747131655878
+entry_point_name: ''
+experiment_id: '892575355303627548'
+lifecycle_stage: active
+run_id: 96861db7b9354c87933fbafda1910e65
+run_name: xgb_tuning_run_7
+run_uuid: 96861db7b9354c87933fbafda1910e65
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1747131645047
+status: 3
+tags: []
+user_id: melli
