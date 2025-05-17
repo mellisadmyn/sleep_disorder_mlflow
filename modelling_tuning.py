@@ -1,4 +1,5 @@
 import os
+from dotenv import load_dotenv
 import pandas as pd
 import mlflow
 import mlflow.sklearn
@@ -31,8 +32,15 @@ def evaluate_model(model, X_test, y_test):
     }
 
 def main():
-    # Set MLflow tracking lokal
-    mlflow.set_tracking_uri("file:./mlruns")
+    # Autentikasi ke DagsHub
+    load_dotenv()
+    username = os.getenv("MLFLOW_TRACKING_USERNAME")
+    password = os.getenv("MLFLOW_TRACKING_PASSWORD")
+    if not username or not password:
+        raise EnvironmentError("MLFLOW_TRACKING_USERNAME dan MLFLOW_TRACKING_PASSWORD harus di-set sebagai environment variable")
+
+    # Set MLflow tracking URI
+    mlflow.set_tracking_uri("https://dagshub.com/mellisadmyn/sleep_disorder_mlflow.mlflow")
     mlflow.set_experiment("Sleep_Disorder_Classification_XGBoost")
 
     # Load data
