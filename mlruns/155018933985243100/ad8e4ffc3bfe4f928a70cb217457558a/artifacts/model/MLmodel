@@ -1,0 +1,33 @@
+artifact_path: model
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.12.10
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.6.1
+mlflow_version: 2.19.0
+model_size_bytes: 582014
+model_uuid: 35c3276f15c5431b8abfdba8305149ec
+run_id: ad8e4ffc3bfe4f928a70cb217457558a
+signature:
+  inputs: '[{"type": "long", "name": "gender", "required": true}, {"type": "double",
+    "name": "age", "required": true}, {"type": "long", "name": "occupation", "required":
+    true}, {"type": "double", "name": "sleep_duration", "required": true}, {"type":
+    "double", "name": "quality_of_sleep", "required": true}, {"type": "double", "name":
+    "physical_activity_level", "required": true}, {"type": "double", "name": "stress_level",
+    "required": true}, {"type": "long", "name": "bmi_category", "required": true},
+    {"type": "double", "name": "heart_rate", "required": true}, {"type": "double",
+    "name": "daily_steps", "required": true}, {"type": "double", "name": "blood_pressure_upper",
+    "required": true}, {"type": "double", "name": "blood_pressure_lower", "required":
+    true}, {"type": "long", "name": "blood_pressure_category", "required": true}]'
+  outputs: '[{"type": "tensor", "tensor-spec": {"dtype": "int64", "shape": [-1]}}]'
+  params: null
+utc_time_created: '2025-05-20 11:46:42.428952'

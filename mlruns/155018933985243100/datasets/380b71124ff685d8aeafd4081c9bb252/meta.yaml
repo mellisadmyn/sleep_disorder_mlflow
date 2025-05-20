@@ -1,0 +1,16 @@
+digest: 75ac9bb0
+name: dataset
+profile: '{"num_rows": 105, "num_elements": 1365}'
+schema: '{"mlflow_colspec": [{"type": "long", "name": "gender", "required": true},
+  {"type": "double", "name": "age", "required": true}, {"type": "long", "name": "occupation",
+  "required": true}, {"type": "double", "name": "sleep_duration", "required": true},
+  {"type": "double", "name": "quality_of_sleep", "required": true}, {"type": "double",
+  "name": "physical_activity_level", "required": true}, {"type": "double", "name":
+  "stress_level", "required": true}, {"type": "long", "name": "bmi_category", "required":
+  true}, {"type": "double", "name": "heart_rate", "required": true}, {"type": "double",
+  "name": "daily_steps", "required": true}, {"type": "double", "name": "blood_pressure_upper",
+  "required": true}, {"type": "double", "name": "blood_pressure_lower", "required":
+  true}, {"type": "long", "name": "blood_pressure_category", "required": true}]}'
+source: '{"tags": {"mlflow.user": "mellisadmyn", "mlflow.source.name": "c:\\Users\\melli\\Dropbox\\Dicoding\\SMSML_Mellisa\\Membangun_model\\modelling.py",
+  "mlflow.source.type": "LOCAL", "mlflow.source.git.commit": "cad666306267c50fe99d26e57e314258667c51b6"}}'
+source_type: code
