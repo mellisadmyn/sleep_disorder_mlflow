@@ -1,4 +1,4 @@
-digest: 75ac9bb0
+digest: ef2217b9
 name: dataset
 profile: '{"num_rows": 105, "num_elements": 1365}'
 schema: '{"mlflow_colspec": [{"type": "long", "name": "gender", "required": true},
@@ -12,5 +12,5 @@ schema: '{"mlflow_colspec": [{"type": "long", "name": "gender", "required": true
   "required": true}, {"type": "double", "name": "blood_pressure_lower", "required":
   true}, {"type": "long", "name": "blood_pressure_category", "required": true}]}'
 source: '{"tags": {"mlflow.user": "mellisadmyn", "mlflow.source.name": "c:\\Users\\melli\\Dropbox\\Dicoding\\SMSML_Mellisa\\Membangun_model\\modelling.py",
-  "mlflow.source.type": "LOCAL", "mlflow.source.git.commit": "cad666306267c50fe99d26e57e314258667c51b6"}}'
+  "mlflow.source.type": "LOCAL", "mlflow.source.git.commit": "61a8634d5682e709b3226857e0c6b088adde4d3c"}}'
 source_type: code
