@@ -1,0 +1,15 @@
+artifact_uri: file:C:/Users/melli/Dropbox/Dicoding/SMSML_Mellisa/Membangun_model/mlruns/843999604413745780/14cf90535c0d46878ca8d99676b0f608/artifacts
+end_time: 1747819869101
+entry_point_name: ''
+experiment_id: '843999604413745780'
+lifecycle_stage: active
+run_id: 14cf90535c0d46878ca8d99676b0f608
+run_name: rf_autolog_fixed-params
+run_uuid: 14cf90535c0d46878ca8d99676b0f608
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1747819861265
+status: 3
+tags: []
+user_id: mellisadmyn

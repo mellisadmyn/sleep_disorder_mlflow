@@ -1,0 +1,38 @@
+artifact_path: random_forest_model
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.12.10
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.6.1
+mlflow_version: 2.19.0
+model_size_bytes: 353513
+model_uuid: 47ac9f4a74624cc7a9de8a7ff9d56c8a
+run_id: 2cd31aeaeb2045f6a6fb050d47f6fa25
+saved_input_example_info:
+  artifact_path: input_example.json
+  pandas_orient: split
+  serving_input_path: serving_input_example.json
+  type: dataframe
+signature:
+  inputs: '[{"type": "long", "name": "gender", "required": true}, {"type": "double",
+    "name": "age", "required": true}, {"type": "long", "name": "occupation", "required":
+    true}, {"type": "double", "name": "sleep_duration", "required": true}, {"type":
+    "double", "name": "quality_of_sleep", "required": true}, {"type": "double", "name":
+    "physical_activity_level", "required": true}, {"type": "double", "name": "stress_level",
+    "required": true}, {"type": "long", "name": "bmi_category", "required": true},
+    {"type": "double", "name": "heart_rate", "required": true}, {"type": "double",
+    "name": "daily_steps", "required": true}, {"type": "double", "name": "blood_pressure_upper",
+    "required": true}, {"type": "double", "name": "blood_pressure_lower", "required":
+    true}, {"type": "long", "name": "blood_pressure_category", "required": true}]'
+  outputs: '[{"type": "tensor", "tensor-spec": {"dtype": "int64", "shape": [-1]}}]'
+  params: null
+utc_time_created: '2025-05-21 09:35:30.182142'
