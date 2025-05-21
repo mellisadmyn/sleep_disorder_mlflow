@@ -3,8 +3,9 @@ import mlflow
 import mlflow.sklearn
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import (
-    accuracy_score, log_loss, precision_score, recall_score, f1_score
+    accuracy_score, log_loss, precision_score, recall_score, f1_score, roc_auc_score
 )
+from sklearn.preprocessing import label_binarize
 import warnings
 warnings.filterwarnings("ignore")
 
@@ -45,16 +46,27 @@ def evaluate_model(model, X_test, y_test) -> dict:
     ValueError: If prediction fails due to mismatched input.
     """
     try:
-        y_pred = model.predict(X_test)
+        y_pred  = model.predict(X_test)
         y_proba = model.predict_proba(X_test)
 
-        return {
-            "accuracy": accuracy_score(y_test, y_pred),
-            "log_loss": log_loss(y_test, y_proba),
-            "precision": precision_score(y_test, y_pred, average='weighted'),
-            "recall": recall_score(y_test, y_pred, average='weighted'),
-            "f1_score": f1_score(y_test, y_pred, average='weighted')
+        metrics = {
+            "score"     : model.score(X_test, y_test),
+            "accuracy"  : accuracy_score(y_test, y_pred),
+            "log_loss"  : log_loss(y_test, y_proba),
+            "precision" : precision_score(y_test, y_pred, average='weighted'),
+            "recall"    : recall_score(y_test, y_pred, average='weighted'),
+            "f1_score"  : f1_score(y_test, y_pred, average='weighted'),
         }
+
+        # ROC AUC
+        if len(set(y_test)) > 2:
+            y_bin = label_binarize(y_test, classes=sorted(set(y_test)))
+            metrics["roc_auc"] = roc_auc_score(y_bin, y_proba, average='weighted', multi_class='ovr')
+        else:
+            metrics["roc_auc"] = roc_auc_score(y_test, y_proba[:, 1])
+
+        return metrics
+    
     except Exception as e:
         raise ValueError(f"[ERROR] Model evaluation failed: {str(e)}") from e
 
@@ -69,19 +81,19 @@ def main():
     try:
         # Set MLflow tracking to local
         mlflow.set_tracking_uri("file:./mlruns")
-        mlflow.set_experiment("Sleep_Disorder_RF-autolog")
+        mlflow.set_experiment("Sleep_Disorder_RF")
 
         # Load datasets
         X_train = load_data("processed-dataset/X_train.csv")
-        X_test = load_data("processed-dataset/X_test.csv")
+        X_test  = load_data("processed-dataset/X_test.csv")
         y_train = load_data("processed-dataset/y_train.csv").squeeze()
-        y_test = load_data("processed-dataset/y_test.csv").squeeze()
+        y_test  = load_data("processed-dataset/y_test.csv").squeeze()
 
         # Enable autologging
         mlflow.sklearn.autolog()
 
         # Train model with autolog
-        with mlflow.start_run(run_name="random_forest_autolog"):
+        with mlflow.start_run(run_name="rf_autolog_fixed-params"):
             model = RandomForestClassifier(random_state=42)
             model.fit(X_train, y_train)
 
@@ -93,7 +105,7 @@ def main():
             # Manual logging for test metrics
             metrics = evaluate_model(model, X_test, y_test)
             for key, value in metrics.items():
-                mlflow.log_metric(f"test_{key}", value)
+                mlflow.log_metric(f"testing_{key}", value)
             print("[INFO] Testing metrics have been autologged by MLflow.")
 
             print("[INFO] Model trained and autologged with MLflow.")
